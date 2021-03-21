@@ -5,3 +5,58 @@
  */
 
 // You can delete this file if you're not using it
+
+const path = require(`path`)
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+  return graphql(`
+    {
+      allWpPost(sort: {fields: [date], order: DESC}) {
+        edges {
+          node {
+            title
+            content
+            excerpt
+            slug
+            date(formatString: "MM-DD-YYYY")
+            author {
+              node {
+                username
+                name
+              }
+            }
+            categories {
+              nodes {
+                name
+                slug
+              }
+            }
+            featuredImage {
+              node {
+                sourceUrl
+                uri
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+
+  `).then(result => {
+    result.data.allWpPost.edges.forEach(({ node }) => {
+      createPage({
+        // Decide URL structure
+        path: node.slug,
+        // path to template
+        component: path.resolve(`./src/templates/blog-post.js`),
+        context: {
+          // This is the $slug variable
+          // passed to blog-post.js
+          slug: node.slug,
+        },
+      })
+    })
+  })
+}
