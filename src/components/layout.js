@@ -8,7 +8,8 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import "@fontsource/press-start-2p"
+import "@fontsource/open-sans" // Defaults to weight 400 with all styles included.
 import Header from "./header"
 import "./layout.css"
 
@@ -29,6 +30,8 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
+          backgroundColor: 'white',
+          boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
           maxWidth: 960,
           padding: `0 1.0875rem 1.45rem`,
         }}

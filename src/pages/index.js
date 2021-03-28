@@ -4,24 +4,21 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Card from "../components/Card"
 
 const IndexPage = ({ data }) => {
-  console.log("data", data)
 
   return (
+    <div  style={{
+      backgroundColor: '#ffffff',
+    }}>
     <Layout>
-      <SEO title="home" />
-      <h1>My WordPress Blog</h1>
-      <h4>Posts</h4>
-      {data.allWpPost.edges.map(({ node }) => (
-        <div>
-          <Link to={node.slug}>
-            <p>{node.title}</p>
-          </Link>
-          <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-        </div>
+      <SEO title="Dango Retro" />
+      {data.allWpPost.edges.map(({ node, key }) => (
+        <Card key={key} node={node} />
       ))}
     </Layout>
+    </div>
   )
 }
 

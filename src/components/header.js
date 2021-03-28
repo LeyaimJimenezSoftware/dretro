@@ -1,11 +1,12 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import "./Header.css"
 
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `rebeccapurple`,
+      background: `#1C1C1E`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -16,11 +17,11 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h1 className="page-name" style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
-            color: `white`,
+            color: "#BDA4D7",
             textDecoration: `none`,
           }}
         >
@@ -36,7 +37,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: `Leya`,
 }
 
 export default Header
