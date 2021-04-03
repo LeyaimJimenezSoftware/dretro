@@ -1,13 +1,13 @@
 import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
+import "./blog.css"
 
 export default ({ data }) => {
   const post = data.allWpPost.edges[0].node
-  console.log(post)
   return (
     <Layout>
-      <div>
+      <div id="blog" style={{padding: `0 1.0875rem 1.45rem`, paddingTop: `1.0875rem`}}>
         <h1>{post.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
         <p> By: {post.author.name} </p>

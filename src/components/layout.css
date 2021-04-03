@@ -595,3 +595,8 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.menu-font {
+  font-family: "Press Start 2P";
+  font-size: 24px;
+}
