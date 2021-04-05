@@ -29,11 +29,11 @@ const Header = ({ siteTitle }) => {
           </div>
           <div className="page-name">
             <Link className="nav-options" to="/">Home</Link>
-            <Link className="nav-options" to="/articles">Anime</Link>
-            <a href="#">Manga</a>
-            <a href="#">Videojuegos</a>
-            <a href="#">Tags</a>
-            <a href="#">Dangokura</a>
+            <Link className="nav-options" to="/tags/anime">Anime</Link>
+            <Link to="/tags/manga">Manga</Link>
+            <Link to="/tags/videojuegos">Videojuegos</Link>
+            <Link to="/tags">Tags</Link>
+            <Link href="#">Dangokura</Link>
           </div>
         </NavItems>
 

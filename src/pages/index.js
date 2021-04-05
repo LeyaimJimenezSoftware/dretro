@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Card from "../components/Card"
 
 const IndexPage = ({ data }) => {
-
+console.log("index",data)
   return (
     <div  style={{
       backgroundColor: '#ffffff',
