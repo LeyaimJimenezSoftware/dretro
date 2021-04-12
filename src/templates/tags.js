@@ -5,17 +5,17 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Card from "../components/Card"
+import Pagination from "../components/Pagination"
 
-const Tags = ({data}) => {
-  console.log('data nodes',data.allWpCategory.edges[0].node.posts)
+const Tags = ({ data, pageContext }) => {
   return (
     <Layout>
-      <div style={{padding: `0 1.0875rem 1.45rem`}}>
-      <SEO title="Dango Retro" />
-      {data.allWpCategory.edges[0].node.posts.nodes.map(( data, key ) => (
-        // console.log("nodesa", data)
-        <Card key={key} node={data} />
-      ))}
+      <div style={{ padding: `0 1.0875rem 1.45rem` }}>
+        <SEO title="Dango Retro" />
+        {data.allWpPost.edges.map(({ node }, key) => (
+          <Card key={key} node={node} />
+        ))}
+        <Pagination pageContext={pageContext} />
       </div>
     </Layout>
   )
@@ -24,38 +24,36 @@ const Tags = ({data}) => {
 export default Tags
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    allWpCategory(filter: {slug: {eq: $slug }}) {
-      totalCount
+  query($slug: String!, $skip: Int!, $limit: Int!) {
+    allWpPost(
+      filter: { categories: { nodes: { elemMatch: { slug: { eq: $slug } } } } }
+      skip: $skip
+      limit: $limit
+    ) {
       edges {
         node {
+          title
+          content
+          excerpt
           slug
-          name
-          count
-          posts {
+          date(formatString: "MM-DD-YYYY")
+          author {
+            node {
+              username
+              name
+            }
+          }
+          categories {
             nodes {
-              date(formatString: "MM-DD-YYYY")
+              name
               slug
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+              uri
               title
-              content
-              author {
-                node {
-                  name
-                }
-              }
-              categories {
-                nodes {
-                  name
-                  slug
-                }
-              }
-              featuredImage {
-                node {
-                  uri
-                  title
-                  sourceUrl
-                }
-              }
             }
           }
         }

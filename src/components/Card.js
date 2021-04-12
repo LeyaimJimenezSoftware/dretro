@@ -5,11 +5,10 @@ import { faCalendarAlt, faUser, faTag } from "@fortawesome/free-solid-svg-icons"
 import { COLORS } from "../constants/colors"
 import "./Card.css"
 
-const Card = ({ node, key }) => {
-  console.log("card",node)
+const Card = ({ node }) => {
+  console.log("card", node)
   return (
     <div
-      key={key}
       style={{
         backgroundColor: "#ffffff",
         marginTop: "20px",
@@ -23,7 +22,7 @@ const Card = ({ node, key }) => {
         }}
       >
         <div id="imageDiv" className="img-card">
-          <Link to={node.slug}>
+          <Link to={`/${node.slug}`}>
             <img
               id="content"
               src={node.featuredImage.node.sourceUrl}
@@ -32,7 +31,7 @@ const Card = ({ node, key }) => {
           </Link>
         </div>
         <div style={{ paddingTop: "10px" }}>
-          <Link to={node.slug}>
+          <Link to={`/${node.slug}`}>
             <h2 style={{ marginBottom: 0 }}>
               <p
                 style={{
@@ -56,8 +55,13 @@ const Card = ({ node, key }) => {
             </div>
             <div style={{ display: "flex", flexDirection: "row" }}>
               <FontAwesomeIcon icon={faTag} style={styles.cardStyle} />
-              <Link to={node.slug} style={{textDecoration: 'underline', marginTop: "1px"}} className="card-info">
-               {node.categories.nodes[0].name}
+              <Link
+                to={`/tags/${node.categories.nodes[0].name}`}
+                replace
+                style={{ textDecoration: "underline", marginTop: "1px" }}
+                className="card-info"
+              >
+                {node.categories.nodes[0].name}
               </Link>
             </div>
           </div>

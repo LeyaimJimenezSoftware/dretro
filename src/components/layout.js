@@ -12,7 +12,9 @@ import styled from "styled-components"
 import "@fontsource/press-start-2p"
 import "@fontsource/open-sans" // Defaults to weight 400 with all styles included.
 import Header from "./header"
+import FooterPage from "./Footer"
 import "./layout.css"
+import logoDango from "../images/dangoretro.png"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,6 +30,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      {/* <DangoImg
+        src={logoDango}
+      /> */}
       <div
         style={{
           margin: `0 auto`,
@@ -37,21 +42,24 @@ const Layout = ({ children }) => {
         }}
       >
         <MobileNav>
-          <Link style={{ display: 'flex' }} to="/">
-            <h1 className="menu-font" style={{textAlign: 'center', alignSelf: 'center', margin: 0, color: 'white', paddingLeft: '10px'}}>Dango Retro</h1>
+          <Link style={{ display: "flex" }} to="/">
+            <h1
+              className="menu-font"
+              style={{
+                textAlign: "center",
+                alignSelf: "center",
+                margin: 0,
+                color: "white",
+                paddingLeft: "10px",
+              }}
+            >
+              Dango Retro
+            </h1>
           </Link>
         </MobileNav>
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
       </div>
+      <FooterPage />
     </>
   )
 }
@@ -68,5 +76,16 @@ const MobileNav = styled.header`
   display: none;
   @media (max-width: 721px) {
     display: flex;
+  }
+`
+
+const DangoImg = styled.img`
+  object-fit: contain;
+  position: absolute;
+  width: 100px;
+  margin: 10px;
+  top: 10%;
+  @media (max-width: 721px) {
+    display: none;
   }
 `

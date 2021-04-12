@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
 import styled from "styled-components"
+import logoDango from "../images/dangoretro.png"
 import "./Header.css"
 
 const Header = ({ siteTitle }) => {
@@ -16,24 +17,27 @@ const Header = ({ siteTitle }) => {
     <NavHeader>
       <NavStyle>
         <NavItems>
-          <div className="page-name">
-            <Link
-              to="/"
-              style={{
-                color: "#BDA4D7",
-                textDecoration: `none`,
-              }}
-            >
-              {siteTitle}
-            </Link>
-          </div>
-          <div className="page-name">
-            <Link className="nav-options" to="/">Home</Link>
-            <Link className="nav-options" to="/tags/anime">Anime</Link>
-            <Link to="/tags/manga">Manga</Link>
-            <Link to="/tags/videojuegos">Videojuegos</Link>
-            <Link to="/tags">Tags</Link>
-            <Link href="#">Dangokura</Link>
+          <div
+            style={{ display: "flex", justifyContent: "space-around" }}
+            className="page-name"
+          >
+            <div>
+              <Link className="nav-options" to="/">
+                Home
+              </Link>
+              <Link className="nav-options" to="/tags/anime">
+                Anime
+              </Link>
+              <Link to="/tags/manga">Manga</Link>
+            </div>
+            <div className="name-logo" style={{margin: '0px 50px'}}>
+            <p style={{marginBottom: 0, color: '#4e52f8' }}>Dango Retro</p>
+            </div>
+            <div>
+              <Link to="/tags/videojuegos">Videojuegos</Link>
+              <Link to="/tags">Tags</Link>
+              <Link href="#">Dangokura</Link>
+            </div>
           </div>
         </NavItems>
 
@@ -106,9 +110,8 @@ Header.defaultProps = {
 
 export default Header
 
-
 const NavHeader = styled.header`
-  background-color: #1C1C1E;
+  background-color: #1c1c1e;
   margin-bottom: 1.45rem;
   @media (max-width: 721px) {
     margin-bottom: 0;
@@ -116,11 +119,14 @@ const NavHeader = styled.header`
 `
 
 const NavStyle = styled.div`
+  display: flex;
+  justify-content: space-around;
   margin: 0 auto;
   max-width: 960px;
   padding: 1.45rem 1.0875rem;
   @media (max-width: 721px) {
     padding: 0;
+    display: block;
   }
 `
 
@@ -155,7 +161,7 @@ const NavItems = styled.div`
     text-decoration: none;
     font-size: 1em;
     &:hover {
-      color: #BDA4D7;
+      color: #4e52f8;
     }
   }
   @media (max-width: 721px) {
@@ -170,7 +176,7 @@ const SideMenu = styled.div`
     /* Our sidebar item styling */
     text-decoration: none;
     margin-bottom: 10px;
-    color: #BDA4D7;
+    color: #4e52f8;
     transition: color 0.2s;
   }
   /* Change color on hover */
@@ -188,7 +194,7 @@ const SideMenu = styled.div`
   }
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-    background: #BDA4D7;
+    background: #4e52f8;
   }
   /* Position and sizing of clickable cross button */
   .bm-cross-button {

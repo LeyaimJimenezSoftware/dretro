@@ -7,7 +7,6 @@ import SEO from "../components/seo"
 import Card from "../components/Card"
 
 const IndexPage = ({ data }) => {
-console.log("index",data)
   return (
     <div  style={{
       backgroundColor: '#ffffff',
@@ -19,8 +18,8 @@ console.log("index",data)
         <Card key={key} node={node} />
       ))}
       </div>
+      <div>Tags dadada</div>
     </Layout>
-    <div>Tags dadada</div>
     </div>
   )
 }

@@ -14,7 +14,6 @@ const TagsPage = ({
   data : { 
     allWpCategory: { nodes }
   }}) => {
-  console.log("dataaaa", nodes)
   return(
     <div>
     <Helmet title={"tags"} />
