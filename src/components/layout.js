@@ -37,8 +37,7 @@ const Layout = ({ children }) => {
         style={{
           margin: `0 auto`,
           backgroundColor: "white",
-          boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
-          maxWidth: 960,
+          maxWidth: 1140,
         }}
       >
         <MobileNav>

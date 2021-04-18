@@ -4,68 +4,88 @@ import { StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import MoreOptions from "../components/MoreOptions"
 import Card from "../components/Card"
 
 const IndexPage = ({ data }) => {
+  console.log("data, data", data)
   return (
-    <div  style={{
-      backgroundColor: '#ffffff',
-    }}>
-    <Layout>
-      <div style={{padding: `0 1.0875rem 1.45rem`}}>
-      <SEO title="Dango Retro" />
-      {data.allWpPost.edges.map(({ node, key }) => (
-        <Card key={key} node={node} />
-      ))}
-      </div>
-      <div>Tags dadada</div>
-    </Layout>
+    <div
+      style={{
+        backgroundColor: "#ffffff",
+      }}
+    >
+      <Layout>
+        <MainDiv>
+          <div
+            style={{
+              padding: `0 1.0875rem 1.45rem`,
+              margin: "0px 15px 5px 15px",
+              boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
+            }}
+          >
+            <SEO title="Dango Retro" />
+            {data.allWpPost.edges.map(({ node, key }) => (
+              <Card key={key} node={node} />
+            ))}
+          </div>
+          <MoreOptions data={data?.allWpCategory} />
+        </MainDiv>
+      </Layout>
     </div>
   )
 }
 
 export default IndexPage
 
-const MobileNav = styled.header`
-  background-color: #1C1C1E;
-  height: 100px;
-  display: none;
+const MainDiv = styled.div`
+  display: flex;
+  flexDirection: row;
   @media (max-width: 721px) {
-    display: flex;
+    display: contents;
   }
 `
 
 export const pageQuery = graphql`
   query {
     allWpPost(sort: { fields: [date], order: DESC }) {
-       edges {
-      node {
-        title
-        content
-        excerpt
-        slug
-        date(formatString: "MM-DD-YYYY")
-        author {
-          node {
-            username
-            name
+      edges {
+        node {
+          title
+          content
+          excerpt
+          slug
+          date(formatString: "MM-DD-YYYY")
+          author {
+            node {
+              username
+              name
+            }
           }
-        }
-        categories {
-          nodes {
-            name
-            slug
+          categories {
+            nodes {
+              name
+              slug
+            }
           }
-        }
-        featuredImage {
-          node {
-            sourceUrl
-            uri
-            title
+          featuredImage {
+            node {
+              sourceUrl
+              uri
+              title
+            }
           }
         }
       }
     }
+
+    allWpCategory(limit: 10, sort: { fields: count, order: DESC }) {
+      totalCount
+      nodes {
+        slug
+        name
+        count
+      }
     }
   }
 `

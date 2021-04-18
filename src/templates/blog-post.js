@@ -32,17 +32,51 @@ export default ({ data }) => {
             <FontAwesomeIcon icon={faUser} style={styles} />
             <span className="card-info">{post.author.node.name}</span>
           </div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <FontAwesomeIcon icon={faTag} style={styles} />
-            {post.categories.nodes.map(({ name }) => (
-              <Link
-                to={`/tags/${name}`}
-                replace
-                style={{ textDecoration: "underline", marginTop: "1px" }}
-                className="card-info"
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faTag}
+              style={{
+                color: COLORS.DANGO_PURPLE,
+                marginRight: 5,
+                alignSelf: "center",
+                fontSize: "14px",
+              }}
+            />
+            {post.categories.nodes.map(({ slug, name }) => (
+              <div
+                className="tags"
+                style={{
+                  backgroundColor: COLORS.DANGO_PURPLE,
+                  borderRadius: "10px 10px",
+                  height: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "0px 3px",
+                }}
               >
-                {name}
-              </Link>
+                <Link
+                  to={`/tags/${slug}`}
+                  replace
+                  className="tags"
+                  style={{
+                    alignSelf: "center",
+                    fontWeight: '900',
+                    textTransform: 'uppercase',
+                    fontSize: "12px",
+                    padding: "0px 10px",
+                  }}
+                >
+                  {name}
+                </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -50,7 +84,6 @@ export default ({ data }) => {
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
         <p> By: {post.author.name} </p>
         <p> On: {post.date} </p>
-
       </div>
     </Layout>
   )

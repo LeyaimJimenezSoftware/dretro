@@ -18,7 +18,6 @@ const Card = ({ node }) => {
         style={{
           display: "flex",
           flexDirection: "column",
-          paddingTop: "19px",
         }}
       >
         <div id="imageDiv" className="img-card">
@@ -44,7 +43,7 @@ const Card = ({ node }) => {
               </p>
             </h2>
           </Link>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', padding: '5px 0px' }}>
             <div style={{ display: "flex", flexDirection: "row" }}>
               <FontAwesomeIcon icon={faCalendarAlt} style={styles.cardStyle} />
               <span className="card-info">{node.date}</span>
@@ -53,16 +52,52 @@ const Card = ({ node }) => {
               <FontAwesomeIcon icon={faUser} style={styles.cardStyle} />
               <span className="card-info">{node.author.node.name}</span>
             </div>
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              <FontAwesomeIcon icon={faTag} style={styles.cardStyle} />
-              <Link
-                to={`/tags/${node.categories.nodes[0].name}`}
-                replace
-                style={{ textDecoration: "underline", marginTop: "1px" }}
-                className="card-info"
-              >
-                {node.categories.nodes[0].name}
-              </Link>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faTag}
+                style={{
+                  color: COLORS.DANGO_PURPLE,
+                  marginRight: 5,
+                  alignSelf: "center",
+                  fontSize: "14px",
+                }}
+              />
+              {node.categories.nodes.map(({ slug, name }) => (
+                <div
+                  className="tags"
+                  style={{
+                    backgroundColor: COLORS.DANGO_PURPLE,
+                    borderRadius: "10px 10px",
+                    height: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: "0px 3px",
+                  }}
+                >
+                  <Link
+                    to={`/tags/${slug}`}
+                    replace
+                    className="tags"
+                    style={{
+                      alignSelf: "center",
+                      fontWeight: "900",
+                      textTransform: "uppercase",
+                      fontSize: "12px",
+                      padding: "0px 10px",
+                    }}
+                  >
+                    {name}
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
           <div

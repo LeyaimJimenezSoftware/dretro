@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
 import styled from "styled-components"
 import logoDango from "../images/dangoretro.png"
+import portada from "../images/DangoRetro/portada/portada.png"
 import "./Header.css"
 
 const Header = ({ siteTitle }) => {
@@ -113,6 +114,7 @@ export default Header
 const NavHeader = styled.header`
   background-color: #1c1c1e;
   margin-bottom: 1.45rem;
+  background-image: url(${portada});
   @media (max-width: 721px) {
     margin-bottom: 0;
   }
