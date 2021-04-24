@@ -9,7 +9,7 @@
 } */
 
 #content:hover {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(1.4); 
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1.4);
   -moz-transform: translateX(-50%) translateY(-50%) scale(1.4);
   -o-transform: translateX(-50%) translateY(-50%) scale(1.4);
   transform: translateX(-50%) translateY(-50%) scale(1.4);
@@ -18,10 +18,10 @@
 }
 
 #content {
--webkit-transition: all .4s ease-in-out;
--moz-transition: all .4s ease-in-out;
--o-transition: all .4s ease-in-out;
--ms-transition: all .4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
 }
 
 #content {
@@ -30,13 +30,13 @@
   left: 50%;
   height: auto;
   width: 100%;
-  -webkit-transform: translateX(-50%) translateY(-50%); 
+  -webkit-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
   -o-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
 
-#imageDiv { 
+#imageDiv {
   position: relative;
   height: 250px;
   width: 100%;
@@ -50,12 +50,12 @@
   width: 100%;
   padding: 40px;
   overflow: hidden;
-  background:rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   opacity: 0;
 }
 
 .card-text {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-weight: bold;
   line-height: 1rem;
 }
@@ -65,8 +65,8 @@ a {
   color: black;
 }
 
-a:hover{
-  color: #4E52F8;
+a:hover {
+  color: #4e52f8;
 }
 
 .card-info {
@@ -78,16 +78,26 @@ a:hover{
   margin-top: 2px;
 }
 
- .tag-info {
-    /* display: inline-block;
-    vertical-align: top;
-    margin-bottom: 5px;
-    padding: 0 .5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #191819;
-    line-height: 1.25rem;
-    background-color: #0ee1dd;
-    font-size: .75rem;
-    border-radius: 10px 0 10px 0; */
- }
+#image-top {
+  position: relative;
+  height: 130px;
+  width: 100%;
+  padding: 40px;
+  overflow: hidden;
+}
+
+#image-top:hover div {
+  display: none;
+}
+
+.top-post-title {
+  font-family: "Press Start 2P";
+}
+
+.top-post-title-sections {
+  color: white;
+}
+
+.top-post-title-sections:hover {
+  color: #4E52F8;
+}

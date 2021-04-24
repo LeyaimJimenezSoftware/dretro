@@ -6,9 +6,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import MoreOptions from "../components/MoreOptions"
 import Card from "../components/Card"
+import { COLORS } from "../constants/colors"
 
 const IndexPage = ({ data }) => {
-  console.log("data, data", data)
   return (
     <div
       style={{
@@ -28,6 +28,27 @@ const IndexPage = ({ data }) => {
             {data.allWpPost.edges.map(({ node, key }) => (
               <Card key={key} node={node} />
             ))}
+            <div
+              style={{
+                backgroundColor: COLORS.DANGO_PURPLE,
+                borderRadius: "10px 10px",
+                height: "24px",
+                display: 'flex',
+                justifyContent: 'center',
+                margin: "0px 3px",
+              }}
+            >
+              <Link
+                to={`/noticias/page`}
+                style={{
+                  alignSelf: 'center',
+                  fontSize: "12px",
+                  color: COLORS.WHITE,
+                }}
+              >
+                <p style={{paddingBottom: 0, marginBottom: 0}}>Ver más</p>
+              </Link>
+            </div>
           </div>
           <MoreOptions data={data?.allWpCategory} />
         </MainDiv>
@@ -40,7 +61,7 @@ export default IndexPage
 
 const MainDiv = styled.div`
   display: flex;
-  flexDirection: row;
+  flexdirection: row;
   @media (max-width: 721px) {
     display: contents;
   }

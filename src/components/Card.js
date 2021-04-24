@@ -6,7 +6,6 @@ import { COLORS } from "../constants/colors"
 import "./Card.css"
 
 const Card = ({ node }) => {
-  console.log("card", node)
   return (
     <div
       style={{
