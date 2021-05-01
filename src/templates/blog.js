@@ -17,7 +17,7 @@ const Blog = ({ data, pageContext }) => {
       <Layout>
         <div style={{ padding: `0 1.0875rem 1.45rem` }}>
           <SEO title="Dango Retro" />
-          {data.allWpPost.edges.map(({ node, key }) => (
+          {data.allWpPost.edges.map(({ node }, key) => (
             <Card key={key} node={node} />
           ))}
           <Pagination pageContext={pageContext} />
@@ -39,6 +39,7 @@ export const pageQuery = graphql`
       edges {
         node {
           title
+          uri
           content
           excerpt
           slug
@@ -53,6 +54,7 @@ export const pageQuery = graphql`
             nodes {
               name
               slug
+              uri
             }
           }
           featuredImage {

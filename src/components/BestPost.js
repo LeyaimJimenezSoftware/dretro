@@ -4,7 +4,6 @@ import { COLORS } from "../constants/colors"
 import "./Card.css"
 
 const Top = ({ data }) => {
-  console.log("datasssss", data.allWpPost.nodes)
   return (
     <div
       style={{
@@ -32,11 +31,10 @@ const Top = ({ data }) => {
         </h2>
         <div>
           {data.allWpPost.nodes.map((data, key) => {
-            console.log(data)
             return (
               <div key={key} style={{ height: "100%", width: "100%" }}>
                 <div id="image-top" className="img-card">
-                  <Link to={`/${data.slug}`}>
+                  <Link to={`${data.uri}`}>
                     <img
                       id="content"
                       src={data.featuredImage.node.sourceUrl}
@@ -74,6 +72,7 @@ export default function BestPost(props) {
           allWpPost(sort: { fields: commentCount }, limit: 5) {
             nodes {
               slug
+              uri
               comments {
                 nodes {
                   content
@@ -84,6 +83,7 @@ export default function BestPost(props) {
                 nodes {
                   slug
                   name
+                  uri
                 }
               }
               title

@@ -25,7 +25,7 @@ const IndexPage = ({ data }) => {
             }}
           >
             <SEO title="Dango Retro" />
-            {data.allWpPost.edges.map(({ node, key }) => (
+            {data.allWpPost.edges.map(({ node }, key) => (
               <Card key={key} node={node} />
             ))}
             <div
@@ -50,7 +50,7 @@ const IndexPage = ({ data }) => {
               </Link>
             </div>
           </div>
-          <MoreOptions data={data?.allWpCategory} />
+          <MoreOptions />
         </MainDiv>
       </Layout>
     </div>
@@ -69,10 +69,11 @@ const MainDiv = styled.div`
 
 export const pageQuery = graphql`
   query {
-    allWpPost(sort: { fields: [date], order: DESC }) {
+    allWpPost(sort: {fields: [date], order: DESC}) {
       edges {
         node {
           title
+          uri
           content
           excerpt
           slug
@@ -87,6 +88,7 @@ export const pageQuery = graphql`
             nodes {
               name
               slug
+              uri
             }
           }
           featuredImage {
@@ -96,16 +98,14 @@ export const pageQuery = graphql`
               title
             }
           }
+          tags {
+            nodes {
+              slug
+              name
+              uri
+            }
+          }
         }
-      }
-    }
-
-    allWpCategory(limit: 10, sort: { fields: count, order: DESC }) {
-      totalCount
-      nodes {
-        slug
-        name
-        count
       }
     }
   }

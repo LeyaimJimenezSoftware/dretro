@@ -3,88 +3,88 @@ import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarAlt, faUser, faTag } from "@fortawesome/free-solid-svg-icons"
+import styled from "styled-components"
+import SimilarPost from "../components/SimilarPost"
+import MoreOptions from "../components/MoreOptions"
+import TagCard from '../components/TagCard'
 import "./blog.css"
 import { COLORS } from "../constants/colors"
 
 export default ({ data }) => {
-  console.log(data)
   const post = data.allWpPost.edges[0].node
 
   return (
     <Layout>
-      <div
-        id="blog"
-        style={{ padding: `0 1.0875rem 1.45rem`, paddingTop: `1.0875rem` }}
-      >
-        <h1 style={{ marginBottom: "0.45rem" }}>{post.title}</h1>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginBottom: "0.45rem",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <FontAwesomeIcon icon={faCalendarAlt} style={styles} />
-            <span className="card-info">{post.date}</span>
-          </div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <FontAwesomeIcon icon={faUser} style={styles} />
-            <span className="card-info">{post.author.node.name}</span>
-          </div>
+      <MainDiv>
+        <div>
           <div
+            id="blog"
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              padding: `1.0875rem 1.45rem`,
+              margin: "0px 15px 5px 15px",
+              boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
             }}
           >
-            <FontAwesomeIcon
-              icon={faTag}
+            <h1 style={{ marginBottom: "0.45rem" }}>{post.title}</h1>
+            <div
               style={{
-                color: COLORS.DANGO_PURPLE,
-                marginRight: 5,
-                alignSelf: "center",
-                fontSize: "14px",
+                display: "flex",
+                flexDirection: "row",
+                marginBottom: "0.45rem",
+                flexWrap: "wrap",
               }}
-            />
-            {post.categories.nodes.map(({ slug, name }) => (
+            >
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <FontAwesomeIcon icon={faCalendarAlt} style={styles} />
+                <span className="card-info">{post.date}</span>
+              </div>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <FontAwesomeIcon icon={faUser} style={styles} />
+                <span className="card-info">{post.author.node.name}</span>
+              </div>
               <div
-                className="tags"
                 style={{
-                  backgroundColor: COLORS.DANGO_PURPLE,
-                  borderRadius: "10px 10px",
-                  height: "20px",
                   display: "flex",
-                  justifyContent: "center",
+                  flexDirection: "row",
                   alignItems: "center",
-                  margin: "0px 3px",
+                  flexWrap: "wrap",
                 }}
               >
-                <Link
-                  to={`/tags/${slug}`}
-                  replace
-                  className="tags"
-                  style={{
-                    alignSelf: "center",
-                    fontWeight: '900',
-                    textTransform: 'uppercase',
-                    fontSize: "12px",
-                    padding: "0px 10px",
-                  }}
-                >
-                  {name}
-                </Link>
+                {post.categories.nodes.map(({ slug, name, uri }, key) => (
+                 <TagCard slug={slug} name={name} key={key} uri={uri} />
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        <p> By: {post.author.name} </p>
-        <p> On: {post.date} </p>
-      </div>
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <p> By: {post.author.name} </p>
+            <p> On: {post.date} </p>
+            <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faTag}
+                  style={{
+                    color: COLORS.DANGO_PURPLE,
+                    marginRight: 5,
+                    alignSelf: "center",
+                    fontSize: "14px",
+                  }}
+                />
+                {post.tags.nodes.map(({ slug, name, uri }, key) => (
+                 <TagCard slug={slug} name={name} key={key} uri={uri} />
+                ))}
+              </div>
+          </div>
+          <SimilarPost category={post.categories}/>
+        </div>
+        <MoreOptions />
+      </MainDiv>
     </Layout>
   )
 }
@@ -115,10 +115,26 @@ export const query = graphql`
             nodes {
               name
               slug
+              uri
+            }
+          }
+          tags {
+            nodes {
+              slug
+              name
+              uri
             }
           }
         }
       }
     }
+  }
+`
+
+const MainDiv = styled.div`
+  display: flex;
+  flexdirection: row;
+  @media (max-width: 721px) {
+    display: contents;
   }
 `

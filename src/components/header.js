@@ -26,18 +26,18 @@ const Header = ({ siteTitle }) => {
               <Link className="nav-options" to="/">
                 Home
               </Link>
-              <Link className="nav-options" to="/tags/anime">
+              <Link className="nav-options" to="/category/anime">
                 Anime
               </Link>
-              <Link to="/tags/manga">Manga</Link>
+              <Link to="/category/manga">Manga</Link>
             </div>
             <div className="name-logo" style={{margin: '0px 50px'}}>
             <p style={{marginBottom: 0, color: '#4e52f8' }}>Dango Retro</p>
             </div>
             <div>
-              <Link to="/tags/videojuegos">Videojuegos</Link>
+              <Link to="/category/videojuegos/">Videojuegos</Link>
               <Link to="/tags">Tags</Link>
-              <Link href="#">Dangokura</Link>
+              <Link to="/category/podcast/">Podcast</Link>
             </div>
           </div>
         </NavItems>

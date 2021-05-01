@@ -19,7 +19,7 @@ const SocialMedia = ({ data }) => {
       style={{
         padding: "0px 15px 0px 0px",
         width: "100%",
-        marginBottom: '1.45rem',
+        marginBottom: "1.45rem",
       }}
     >
       <div
@@ -28,7 +28,7 @@ const SocialMedia = ({ data }) => {
           marginBottom: "18px",
         }}
       >
-        <h2 style={{display: 'flex', flexDirection: 'row', marginBottom: 0}}>
+        <h2 style={{ display: "flex", flexDirection: "row", marginBottom: 0 }}>
           <FontAwesomeIcon
             icon={faCircle}
             style={{
@@ -67,34 +67,42 @@ const SocialMedia = ({ data }) => {
             justifyContent: "space-between",
           }}
         >
-          <img
-            src={facebook}
-            style={{
-              height: "50px",
-              width: "50px",
-            }}
-          />
-          <img
-            src={youtube}
-            style={{
-              height: "50px",
-              width: "50px",
-            }}
-          />
-          <img
-            src={twitter}
-            style={{
-              height: "50px",
-              width: "50px",
-            }}
-          />
-             <img
-            src={twitch}
-            style={{
-              height: "50px",
-              width: "50px",
-            }}
-          />
+          <a href="https://www.facebook.com/dangoretro">
+            <img
+              src={facebook}
+              style={{
+                height: "50px",
+                width: "50px",
+              }}
+            />
+          </a>
+          <a href="https://www.youtube.com/channel/UCpfP9DXZ-NyV4sNIwKHUBxA">
+            <img
+              src={youtube}
+              style={{
+                height: "50px",
+                width: "50px",
+              }}
+            />
+          </a>
+          <a href="https://twitter.com/DangoRetro">
+            <img
+              src={twitter}
+              style={{
+                height: "50px",
+                width: "50px",
+              }}
+            />
+          </a>
+          <a href="https://www.twitch.tv/dangoretro">
+            <img
+              src={twitch}
+              style={{
+                height: "50px",
+                width: "50px",
+              }}
+            />
+          </a>
         </div>
       </div>
       <div
@@ -102,12 +110,14 @@ const SocialMedia = ({ data }) => {
           boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
         }}
       >
-        <img
-          src={discord}
-          style={{
-            marginBottom: 0,
-          }}
-        />
+        <a href="https://discord.gg/UdN6fHnMgu">
+          <img
+            src={discord}
+            style={{
+              marginBottom: 0,
+            }}
+          />
+        </a>
       </div>
     </div>
   )

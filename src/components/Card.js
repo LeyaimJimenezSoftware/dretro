@@ -3,9 +3,11 @@ import { Link, graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarAlt, faUser, faTag } from "@fortawesome/free-solid-svg-icons"
 import { COLORS } from "../constants/colors"
+import TagCard from "../components/TagCard"
 import "./Card.css"
 
 const Card = ({ node }) => {
+  console.log("soy node", node)
   return (
     <div
       style={{
@@ -20,7 +22,7 @@ const Card = ({ node }) => {
         }}
       >
         <div id="imageDiv" className="img-card">
-          <Link to={`/${node.slug}`}>
+          <Link to={`${node.uri}`}>
             <img
               id="content"
               src={node.featuredImage.node.sourceUrl}
@@ -29,7 +31,7 @@ const Card = ({ node }) => {
           </Link>
         </div>
         <div style={{ paddingTop: "10px" }}>
-          <Link to={`/${node.slug}`}>
+          <Link to={`${node.uri}`}>
             <h2 style={{ marginBottom: 0 }}>
               <p
                 style={{
@@ -59,43 +61,8 @@ const Card = ({ node }) => {
                 alignItems: "center",
               }}
             >
-              <FontAwesomeIcon
-                icon={faTag}
-                style={{
-                  color: COLORS.DANGO_PURPLE,
-                  marginRight: 5,
-                  alignSelf: "center",
-                  fontSize: "14px",
-                }}
-              />
-              {node.categories.nodes.map(({ slug, name }) => (
-                <div
-                  className="tags"
-                  style={{
-                    backgroundColor: COLORS.DANGO_PURPLE,
-                    borderRadius: "10px 10px",
-                    height: "20px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    margin: "0px 3px",
-                  }}
-                >
-                  <Link
-                    to={`/tags/${slug}`}
-                    replace
-                    className="tags"
-                    style={{
-                      alignSelf: "center",
-                      fontWeight: "900",
-                      textTransform: "uppercase",
-                      fontSize: "12px",
-                      padding: "0px 10px",
-                    }}
-                  >
-                    {name}
-                  </Link>
-                </div>
+              {node.categories.nodes.map(({ slug, name, uri }, key) => (
+                <TagCard slug={slug} name={name} key={key} uri={uri} />
               ))}
             </div>
           </div>

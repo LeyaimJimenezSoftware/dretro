@@ -11,30 +11,31 @@ import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
 const TagsPage = ({
-  data : { 
-    allWpCategory: { nodes }
-  }}) => {
-  return(
+  data: {
+    allWpTag: { nodes },
+  },
+}) => {
+  return (
     <div>
-    <Helmet title={"tags"} />
-    <Layout>
-      <div style={{padding: `0 1.0875rem 1.45rem`}}>
-      <SEO title="Dango Retro" />
-      <div>
-      <h1>Tags</h1>
-      <ul>
-        {nodes.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tags/${kebabCase(tag.slug)}`}>
-              {tag.name} ({tag.count})
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Helmet title={"Categorías"} />
+      <Layout>
+        <div style={{ padding: `0 1.0875rem 1.45rem` }}>
+          <SEO title="Dango Retro" />
+          <div>
+            <h1>Tags</h1>
+            <ul>
+              {nodes.map(tag => (
+                <li key={tag.fieldValue}>
+                  <Link to={tag.uri}>
+                    {tag.name} ({tag.count})
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Layout>
     </div>
-      </div>
-    </Layout>
-  </div>
   )
 }
 
@@ -60,12 +61,12 @@ export default TagsPage
 
 export const pageQuery = graphql`
   query {
-    allWpCategory {
-      totalCount
+    allWpTag {
       nodes {
         slug
         name
         count
+        uri
       }
     }
   }

@@ -19,6 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             title
+            uri
             content
             excerpt
             slug
@@ -51,6 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            uri
             name
             count
             posts {
@@ -69,13 +71,23 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      allWpTag {
+        edges {
+          node {
+            uri
+            name
+            slug
+          }
+        }
+      }
     }
   `)
 
   paginate({
     createPage, // The Gatsby `createPage` function
     items: result.data.allWpPost.edges, // An array of objects
-    itemsPerPage: 1, // How many items you want per page
+    itemsPerPage: 10, // How many items you want per page
     pathPrefix: '/noticias/page', // Creates pages like `/blog`, `/blog/2`, etc
     component: path.resolve('./src/templates/blog.js'), 
   })
@@ -84,6 +96,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const postTemplate = path.resolve(`./src/templates/blog-post.js`)
   const tagsTemplate = path.resolve(`./src/templates/tags.js`)
   const tagsBlogTemplate = path.resolve(`./src/templates/blog-post-tag.js`)
+  const CategoryTemplate = path.resolve(`./src/templates/category.js`)
 
   if (result.errors) {
     return
@@ -92,7 +105,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allWpPost.edges.forEach(({ node }) => {
     createPage({
       // Decide URL structure
-      path: node.slug,
+      path: node.uri,
       // path to template
       component: postTemplate,
       context: {
@@ -139,13 +152,27 @@ exports.createPages = async ({ graphql, actions }) => {
       })
   })
 
- 
   result.data.allWpCategory.edges.forEach(({ node }) => {
     paginate({
       createPage, // The Gatsby `createPage` function
       items: result.data.allWpCategory.edges, // An array of objects
-      itemsPerPage: 1, // How many items you want per page
-      pathPrefix: `/tags/${node.slug}`, // Creates pages like `/blog`, `/blog/2`, etc
+      itemsPerPage: 10, // How many items you want per page
+      pathPrefix: node.uri, // Creates pages like `/blog`, `/blog/2`, etc
+      component: CategoryTemplate, 
+      context: {
+        // This is the $slug variable
+        // passed to blog-post.js
+        slug: node.slug,
+      },
+    })
+  })
+
+  result.data.allWpTag.edges.forEach(({ node }) => {
+    paginate({
+      createPage, // The Gatsby `createPage` function
+      items: result.data.allWpTag.edges, // An array of objects
+      itemsPerPage: 10, // How many items you want per page
+      pathPrefix: node.uri, // Creates pages like `/blog`, `/blog/2`, etc
       component: tagsTemplate, 
       context: {
         // This is the $slug variable
