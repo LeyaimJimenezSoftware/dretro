@@ -5,13 +5,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarAlt, faUser, faTag } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"
 import SimilarPost from "../components/SimilarPost"
+import { DiscussionEmbed } from "disqus-react"
 import MoreOptions from "../components/MoreOptions"
-import TagCard from '../components/TagCard'
+import TagCard from "../components/TagCard"
 import "./blog.css"
 import { COLORS } from "../constants/colors"
 
 export default ({ data }) => {
   const post = data.allWpPost.edges[0].node
+  const { title, slug } = post
+
+  console.log("hi", process.env.GATSBY_DISQUS_NAME)
+  const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: { identifier: slug, title },
+  }
 
   return (
     <Layout>
@@ -25,7 +33,7 @@ export default ({ data }) => {
               boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
             }}
           >
-            <h1 style={{ marginBottom: "0.45rem" }}>{post.title}</h1>
+            <h1 style={{ marginBottom: "0.45rem" }}>{title}</h1>
             <div
               style={{
                 display: "flex",
@@ -51,7 +59,7 @@ export default ({ data }) => {
                 }}
               >
                 {post.categories.nodes.map(({ slug, name, uri }, key) => (
-                 <TagCard slug={slug} name={name} key={key} uri={uri} />
+                  <TagCard slug={slug} name={name} key={key} uri={uri} />
                 ))}
               </div>
             </div>
@@ -60,28 +68,36 @@ export default ({ data }) => {
             <p> By: {post.author.name} </p>
             <p> On: {post.date} </p>
             <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faTag}
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  flexWrap: "wrap",
+                  color: COLORS.DANGO_PURPLE,
+                  marginRight: 5,
+                  alignSelf: "center",
+                  fontSize: "14px",
                 }}
-              >
-                <FontAwesomeIcon
-                  icon={faTag}
-                  style={{
-                    color: COLORS.DANGO_PURPLE,
-                    marginRight: 5,
-                    alignSelf: "center",
-                    fontSize: "14px",
-                  }}
-                />
-                {post.tags.nodes.map(({ slug, name, uri }, key) => (
-                 <TagCard slug={slug} name={name} key={key} uri={uri} />
-                ))}
-              </div>
+              />
+              {post.tags.nodes.map(({ slug, name, uri }, key) => (
+                <TagCard slug={slug} name={name} key={key} uri={uri} />
+              ))}
+            </div>
           </div>
-          <SimilarPost category={post.categories}/>
+          <SimilarPost category={post.categories} />
+          <div
+            style={{
+              margin: "0px 15px 5px 15px",
+              // boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
+            }}
+          >
+            <DiscussionEmbed {...disqusConfig} />
+          </div>
         </div>
         <MoreOptions />
       </MainDiv>
