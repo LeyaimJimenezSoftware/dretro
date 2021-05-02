@@ -8,14 +8,14 @@
 
 const path = require(`path`)
 const _ = require("lodash")
-const {paginate, createPagePerItem} = require('gatsby-awesome-pagination')
+const { paginate, createPagePerItem } = require("gatsby-awesome-pagination")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const result = await graphql(`
     {
-      allWpPost(sort: {fields: [date], order: DESC}) {
+      allWpPost(sort: { fields: [date], order: DESC }) {
         edges {
           node {
             title
@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
 
-      allWpCategory(sort: {fields: slug}) {
+      allWpCategory(sort: { fields: slug }) {
         totalCount
         edges {
           node {
@@ -88,10 +88,9 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage, // The Gatsby `createPage` function
     items: result.data.allWpPost.edges, // An array of objects
     itemsPerPage: 10, // How many items you want per page
-    pathPrefix: '/noticias/page', // Creates pages like `/blog`, `/blog/2`, etc
-    component: path.resolve('./src/templates/blog.js'), 
+    pathPrefix: "/noticias/page", // Creates pages like `/blog`, `/blog/2`, etc
+    component: path.resolve("./src/templates/blog.js"),
   })
-
 
   const postTemplate = path.resolve(`./src/templates/blog-post.js`)
   const tagsTemplate = path.resolve(`./src/templates/tags.js`)
@@ -115,9 +114,9 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  
+
   result.data.allWpPost.edges.forEach(({ node }) => {
-    node.categories.nodes.forEach(( data ) => {
+    node.categories.nodes.forEach(data => {
       createPage({
         // Decide URL structure
         path: `/tags/${data.slug}/${node.slug}`,
@@ -132,24 +131,27 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
-  
+
   const posts = result.data.allWpPost.edges
   const postsPerPage = 3
   const numPages = Math.ceil(posts.length / postsPerPage)
 
   result.data.allWpPost.edges.forEach(({ node }, i) => {
-    const pageNum = Math.ceil((i+1)/postsPerPage)
-      createPage({
-        // Decide URL structure
-        path: pageNum === 1 ? `noticias/page/${node.slug}` : `/noticias/page/${pageNum}/${node.slug}`,
-        // path to template
-        component: postTemplate,
-        context: {
-          // This is the $slug variable
-          // passed to blog-post.js
-          slug: node.slug,
-        },
-      })
+    const pageNum = Math.ceil((i + 1) / postsPerPage)
+    createPage({
+      // Decide URL structure
+      path:
+        pageNum === 1
+          ? `noticias/page/${node.slug}`
+          : `/noticias/page/${pageNum}/${node.slug}`,
+      // path to template
+      component: postTemplate,
+      context: {
+        // This is the $slug variable
+        // passed to blog-post.js
+        slug: node.slug,
+      },
+    })
   })
 
   result.data.allWpCategory.edges.forEach(({ node }) => {
@@ -158,7 +160,7 @@ exports.createPages = async ({ graphql, actions }) => {
       items: result.data.allWpCategory.edges, // An array of objects
       itemsPerPage: 10, // How many items you want per page
       pathPrefix: node.uri, // Creates pages like `/blog`, `/blog/2`, etc
-      component: CategoryTemplate, 
+      component: CategoryTemplate,
       context: {
         // This is the $slug variable
         // passed to blog-post.js
@@ -173,12 +175,29 @@ exports.createPages = async ({ graphql, actions }) => {
       items: result.data.allWpTag.edges, // An array of objects
       itemsPerPage: 10, // How many items you want per page
       pathPrefix: node.uri, // Creates pages like `/blog`, `/blog/2`, etc
-      component: tagsTemplate, 
+      component: tagsTemplate,
       context: {
         // This is the $slug variable
         // passed to blog-post.js
         slug: node.slug,
       },
     })
+  })
+
+  createPage({
+    path: "/search/blog",
+    component: path.resolve(`./src/templates/search.js`),
+    context: {
+      searchData: {
+        allWpPost: result.data.allWpPost.edges,
+        options: {
+          indexStrategy: "Prefix match",
+          searchSanitizer: "Lower Case",
+          TitleIndex: true,
+          AuthorIndex: true,
+          SearchByTerm: true,
+        },
+      },
+    },
   })
 }

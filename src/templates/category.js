@@ -25,9 +25,6 @@ const Category = ({ data, pageContext }) => {
           {data.allWpPost.edges.map(({ node }, key) => (
             <Card key={key} node={node} />
           ))}
-          {data.allWpPost.edges.map(({ node }, key) => (
-            <Card key={key} node={node} />
-          ))}
           <Pagination pageContext={pageContext} />
         </div>
         <MoreOptions />

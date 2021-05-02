@@ -7,7 +7,7 @@ import TagCard from "../components/TagCard"
 import "./Card.css"
 
 const Card = ({ node }) => {
-  console.log("soy node", node)
+  console.log("soy node nuevo", node)
   return (
     <div
       style={{

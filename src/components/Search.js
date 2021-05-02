@@ -1,10 +1,17 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import "./Tags.css"
 
 const Search = () => {
+  const [value, setValue] = React.useState("")
+
+  const handleSearch = () => {
+    console.log("soy val", value)
+    navigate('/search/blog/', {state: { value }})
+  }
+
   return (
     <div
       style={{
@@ -14,8 +21,8 @@ const Search = () => {
       className="wrap"
     >
       <div className="search">
-        <input type="text" className="searchTerm" placeholder="Buscar" />
-        <button type="submit" className="searchButton">
+        <input type="text" className="searchTerm" placeholder="Buscar" value={value} onChange={e => setValue(e.target.value)} />
+        <button onClick={()=> handleSearch()} className="searchButton">
           <FontAwesomeIcon
             icon={faSearch}
             style={{

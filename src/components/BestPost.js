@@ -7,7 +7,7 @@ const Top = ({ data }) => {
   return (
     <div
       style={{
-        padding: "0px 15px 0px 0px",
+        padding: "0px 0px 0px 0px",
         width: "100%",
       }}
     >

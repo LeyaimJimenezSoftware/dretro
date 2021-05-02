@@ -10,14 +10,14 @@ import facebook from "../images/facebook-logo.png"
 import twitch from "../images/Twitch.png"
 import twitter from "../images/twitter.png"
 import youtube from "../images/youtube.png"
-import discord from "../images/discordlogo.png"
+import discord from "../images/discord-white.png"
 import "./Tags.css"
 
 const SocialMedia = ({ data }) => {
   return (
     <div
       style={{
-        padding: "0px 15px 0px 0px",
+        padding: "0px 0px 0px 0px",
         width: "100%",
         marginBottom: "1.45rem",
       }}
@@ -28,16 +28,14 @@ const SocialMedia = ({ data }) => {
           marginBottom: "18px",
         }}
       >
-        <h2 style={{ display: "flex", flexDirection: "row", marginBottom: 0 }}>
-          <FontAwesomeIcon
-            icon={faCircle}
-            style={{
-              color: COLORS.DANGO_PURPLE,
-              marginLeft: 15,
-              alignSelf: "center",
-              fontSize: "10px",
-            }}
-          />
+        <h2
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            marginBottom: 10,
+            backgroundColor: COLORS.DANGO_PURPLE,
+          }}
+        >
           <p
             className="tag-title"
             style={{
@@ -45,19 +43,11 @@ const SocialMedia = ({ data }) => {
               fontSize: "1rem",
               textAlign: "center",
               marginBottom: 0,
+              color: COLORS.WHITE,
             }}
           >
             Redes Scociales
           </p>
-          <FontAwesomeIcon
-            icon={faCircle}
-            style={{
-              color: COLORS.DANGO_PURPLE,
-              marginRight: 15,
-              alignSelf: "center",
-              fontSize: "10px",
-            }}
-          />
         </h2>
         <div
           style={{
@@ -73,6 +63,7 @@ const SocialMedia = ({ data }) => {
               style={{
                 height: "50px",
                 width: "50px",
+                marginBottom: 0,
               }}
             />
           </a>
@@ -82,6 +73,7 @@ const SocialMedia = ({ data }) => {
               style={{
                 height: "50px",
                 width: "50px",
+                marginBottom: 0,
               }}
             />
           </a>
@@ -91,6 +83,7 @@ const SocialMedia = ({ data }) => {
               style={{
                 height: "50px",
                 width: "50px",
+                marginBottom: 0,
               }}
             />
           </a>
@@ -100,6 +93,7 @@ const SocialMedia = ({ data }) => {
               style={{
                 height: "50px",
                 width: "50px",
+                marginBottom: 0,
               }}
             />
           </a>
@@ -108,16 +102,37 @@ const SocialMedia = ({ data }) => {
       <div
         style={{
           boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
+          display: 'flex',
+          flexDirection: "row-reverse",
+          backgroundColor: COLORS.DANGO_PURPLE
         }}
       >
-        <a href="https://discord.gg/UdN6fHnMgu">
-          <img
-            src={discord}
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+       
+          }}
+        >
+          <a
             style={{
-              marginBottom: 0,
+              display: "flex",
+              justifyContent: "center",
+              height: "100%",
+              width: "100%",
             }}
-          />
-        </a>
+            href="https://discord.gg/UdN6fHnMgu"
+          >
+            <img
+              src={discord}
+              style={{
+                marginBottom: 0,
+              }}
+            />
+          </a>
+        </div>
       </div>
     </div>
   )

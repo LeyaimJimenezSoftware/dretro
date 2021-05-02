@@ -24,7 +24,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <MainDiv>
-        <div>
+        <BlogContainer>
           <div
             id="blog"
             style={{
@@ -93,13 +93,14 @@ export default ({ data }) => {
           <div
             style={{
               margin: "0px 15px 5px 15px",
-              // boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
             }}
           >
             <DiscussionEmbed {...disqusConfig} />
           </div>
-        </div>
-        <MoreOptions />
+        </BlogContainer>
+        <SideContainer >
+          <MoreOptions />
+        </SideContainer>
       </MainDiv>
     </Layout>
   )
@@ -154,3 +155,17 @@ const MainDiv = styled.div`
     display: contents;
   }
 `
+const BlogContainer = styled.div`
+    width: 75%;
+  @media (max-width: 721px) {
+    width: 100%;
+  }
+`
+
+const SideContainer = styled.div`
+    width: 25%;
+  @media (max-width: 721px) {
+    width: 100%;
+  }
+`
+
