@@ -1,18 +1,18 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCalendarAlt, faUser, faTag } from "@fortawesome/free-solid-svg-icons"
+import { faCalendarAlt, faUser } from "@fortawesome/free-solid-svg-icons"
 import { COLORS } from "../constants/colors"
 import TagCard from "../components/TagCard"
 import "./Card.css"
 
 const Card = ({ node }) => {
-  console.log("soy node nuevo", node)
   return (
     <div
       style={{
         backgroundColor: "#ffffff",
-        marginTop: "20px",
+        marginBottom: "20px",
+        boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
       }}
     >
       <div
@@ -30,7 +30,7 @@ const Card = ({ node }) => {
             />
           </Link>
         </div>
-        <div style={{ paddingTop: "10px" }}>
+        <div style={{ paddingTop: "10px" , margin: "0px 15px"}}>
           <Link to={`${node.uri}`}>
             <h2 style={{ marginBottom: 0 }}>
               <p
@@ -38,13 +38,14 @@ const Card = ({ node }) => {
                   fontSize: "24px",
                   fontWeight: "bold",
                   marginBottom: 0,
+                  fontFamily: 'sans-serif',
                 }}
               >
                 {node.title}
               </p>
             </h2>
           </Link>
-          <div style={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', padding: '5px 0px' }}>
+          <div style={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', padding: '5px 0px 10px' }}>
             <div style={{ display: "flex", flexDirection: "row" }}>
               <FontAwesomeIcon icon={faCalendarAlt} style={styles.cardStyle} />
               <span className="card-info">{node.date}</span>
@@ -59,6 +60,7 @@ const Card = ({ node }) => {
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
+                flexWrap: "wrap",
               }}
             >
               {node.categories.nodes.map(({ slug, name, uri }, key) => (
@@ -67,7 +69,8 @@ const Card = ({ node }) => {
             </div>
           </div>
           <div
-            style={{ fontSize: "14px" }}
+            className="card-text-info"
+            style={{ fontSize: "14px", color: "#666666" }}
             dangerouslySetInnerHTML={{ __html: node.excerpt }}
           />
         </div>

@@ -14,7 +14,6 @@ import "@fontsource/open-sans" // Defaults to weight 400 with all styles include
 import Header from "./header"
 import FooterPage from "./Footer"
 import "./layout.css"
-import logoDango from "../images/dangoretro.png"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -30,13 +29,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      {/* <DangoImg
-        src={logoDango}
-      /> */}
       <div
         style={{
           margin: `0 auto`,
-          // backgroundColor: "white",
           maxWidth: 1140,
         }}
       >
@@ -75,16 +70,5 @@ const MobileNav = styled.header`
   display: none;
   @media (max-width: 721px) {
     display: flex;
-  }
-`
-
-const DangoImg = styled.img`
-  object-fit: contain;
-  position: absolute;
-  width: 100px;
-  margin: 10px;
-  top: 10%;
-  @media (max-width: 721px) {
-    display: none;
   }
 `

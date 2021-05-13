@@ -1,9 +1,7 @@
-import React, { useState } from "react"
-import styled from "styled-components"
+import React from "react"
 import { Link, graphql, StaticQuery } from "gatsby"
 import "./Header.css"
 import { COLORS } from "../constants/colors"
-import { getPost } from "../constants/services"
 
 const Posts = props => {
   console.log("post", props.data)
@@ -82,19 +80,6 @@ export default function SimilarPost(props) {
     />
   )
 }
-
-const NavDiv = styled.div`
-  background-color: ${COLORS.DANGO_PURPLE};
-  color: ${COLORS.WHITE};
-  height: 35px;
-  width: 35px;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  &:hover {
-    background-color: ${COLORS.BLACK};
-  }
-`
 
 const defaultPosts = graphql`
   query {

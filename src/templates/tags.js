@@ -1,23 +1,26 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-import styled from "styled-components"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Card from "../components/Card"
 import Pagination from "../components/Pagination"
+import CardView from "../components/CardView"
+
+const AllTagsData = ({ data, pageContext }) => {
+  return (
+    <>
+      <SEO title="Dango Retro" />
+      {data.allWpPost.edges.map(({ node }, key) => (
+        <Card key={key} node={node} />
+      ))}
+      <Pagination pageContext={pageContext} />
+    </>
+  )
+}
 
 const Tags = ({ data, pageContext }) => {
   return (
-    <Layout>
-      <div style={{ padding: `0 1.0875rem 1.45rem` }}>
-        <SEO title="Dango Retro" />
-        {data.allWpPost.edges.map(({ node }, key) => (
-          <Card key={key} node={node} />
-        ))}
-        <Pagination pageContext={pageContext} />
-      </div>
-    </Layout>
+    <CardView allPost={<AllTagsData data={data} pageContext={pageContext} />} />
   )
 }
 

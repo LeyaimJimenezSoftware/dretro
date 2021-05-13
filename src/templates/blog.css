@@ -8,14 +8,3 @@
     height: 100%;
   }
 }
-
-.tags a:hover{
-  color: #999999;
-}
-
-.tags a{
-  color: white;
-}
-/* div:hover a {
-  color: white;
-} */

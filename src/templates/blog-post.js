@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarAlt, faUser, faTag } from "@fortawesome/free-solid-svg-icons"
 import styled from "styled-components"

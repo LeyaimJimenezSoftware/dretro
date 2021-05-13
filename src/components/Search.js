@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql, navigate } from "gatsby"
+import { navigate } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import "./Tags.css"
@@ -8,7 +8,6 @@ const Search = () => {
   const [value, setValue] = React.useState("")
 
   const handleSearch = () => {
-    console.log("soy val", value)
     navigate('/search/blog/', {state: { value }})
   }
 

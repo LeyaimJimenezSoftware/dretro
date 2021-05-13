@@ -1,13 +1,7 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import { Link, graphql, StaticQuery } from "gatsby"
-import { COLORS } from "../constants/colors"
-import { getPost } from "../constants/services"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from "react"
+import { graphql, StaticQuery } from "gatsby"
 
 const Posts = props => {
-  console.log("post", props.data)
   return (
     <div>
      holas
@@ -70,16 +64,3 @@ export default function SearchResult({location}) {
     />
   )
 }
-
-const NavDiv = styled.div`
-  background-color: ${COLORS.DANGO_PURPLE};
-  color: ${COLORS.WHITE};
-  height: 35px;
-  width: 35px;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  &:hover {
-    background-color: ${COLORS.BLACK};
-  }
-`

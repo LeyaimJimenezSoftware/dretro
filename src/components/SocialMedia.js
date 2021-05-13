@@ -1,11 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import styled from "styled-components"
-import kebabCase from "lodash/kebabCase"
-import { faCircle, faSearch } from "@fortawesome/free-solid-svg-icons"
 import { COLORS } from "../constants/colors"
-import logoDango from "../images/dangoretro.png"
 import facebook from "../images/facebook-logo.png"
 import twitch from "../images/Twitch.png"
 import twitter from "../images/twitter.png"
@@ -60,6 +54,7 @@ const SocialMedia = ({ data }) => {
           <a href="https://www.facebook.com/dangoretro">
             <img
               src={facebook}
+              alt="facebook"
               style={{
                 height: "50px",
                 width: "50px",
@@ -70,6 +65,7 @@ const SocialMedia = ({ data }) => {
           <a href="https://www.youtube.com/channel/UCpfP9DXZ-NyV4sNIwKHUBxA">
             <img
               src={youtube}
+              alt="youtube"
               style={{
                 height: "50px",
                 width: "50px",
@@ -80,6 +76,7 @@ const SocialMedia = ({ data }) => {
           <a href="https://twitter.com/DangoRetro">
             <img
               src={twitter}
+              alt="twitter"
               style={{
                 height: "50px",
                 width: "50px",
@@ -90,6 +87,7 @@ const SocialMedia = ({ data }) => {
           <a href="https://www.twitch.tv/dangoretro">
             <img
               src={twitch}
+              alt="twitch"
               style={{
                 height: "50px",
                 width: "50px",
@@ -126,6 +124,7 @@ const SocialMedia = ({ data }) => {
             href="https://discord.gg/UdN6fHnMgu"
           >
             <img
+              alt="discord"
               src={discord}
               style={{
                 marginBottom: 0,

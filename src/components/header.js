@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
 import styled from "styled-components"
-import logoDango from "../images/dangoretro.png"
 import portada from "../images/DangoRetro/portada/portada.png"
 import "./Header.css"
 
@@ -131,25 +130,6 @@ const NavStyle = styled.div`
     display: block;
   }
 `
-
-const TopNav = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #fafafa;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1101;
-  top: 0;
-  width: 100vw;
-`
-const Logo = styled.div`
-  padding: 1em 1em 0 1em;
-`
-
 const NavItems = styled.div`
   display: flex;
   flex-direction: row;

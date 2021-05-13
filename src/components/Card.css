@@ -38,7 +38,7 @@
 
 #imageDiv {
   position: relative;
-  height: 250px;
+  height: 200px;
   width: 100%;
   padding: 40px;
   overflow: hidden;
@@ -100,4 +100,12 @@ a:hover {
 
 .top-post-title-sections:hover {
   color: #4E52F8;
+}
+
+.card-text-info p{
+  margin-bottom: 14px;
+}
+
+.link-more {
+  display: none;
 }

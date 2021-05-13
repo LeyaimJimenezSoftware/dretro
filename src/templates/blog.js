@@ -1,7 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-import styled from "styled-components"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Card from "../components/Card"

@@ -70,10 +70,7 @@ class ClientSearch extends Component {
     e.preventDefault()
   }
   render() {
-    const { searchResults, searchQuery } = this.state
-    const { books } = this.props
-    const queryResults = searchQuery === "" ? books : searchResults
-    console.log("searchResults", searchResults)
+    const { searchResults } = this.state
     return (
       <>
         {searchResults.length > 0 && (

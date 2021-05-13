@@ -1,7 +1,4 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import styled from "styled-components"
 import SocialMedia from "../components/SocialMedia"
 import Category from "../components/Category"
 import Search from "../components/Search"

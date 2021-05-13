@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link, graphql, StaticQuery } from "gatsby"
-import kebabCase from "lodash/kebabCase"
 import { COLORS } from "../constants/colors"
 import "./Card.css"
 import styled from "styled-components"
@@ -31,6 +30,7 @@ const CategoryList = ({ data }) => {
                 {tag.name}
                 <img
                   src={logoDango}
+                  alt="dango"
                   style={{
                     height: "26px",
                     width: "26px",
@@ -70,6 +70,7 @@ export default function Category(props) {
 const DivTags = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 10px 0px;
 `
 
 const LiTags = styled.li`
@@ -77,26 +78,10 @@ const LiTags = styled.li`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0px;
 `
 const TagsTitle = styled.h2`
-  padding: 0.5rem 0;
+  padding: 10px 0;
   border-bottom: 1px solid #eee;
   margin-bottom: 1rem;
-`
-const optionsNav = styled.div`
-  display: flex;
-  flex-direction: row;
-  a {
-    color: #ffffff;
-    text-align: center;
-    padding: 1em;
-    text-decoration: none;
-    font-size: 1em;
-    &:hover {
-      color: #4e52f8;
-    }
-  }
-  @media (max-width: 721px) {
-    display: none;
-  }
 `

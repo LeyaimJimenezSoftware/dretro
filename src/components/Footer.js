@@ -1,7 +1,4 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
-import { slide as Menu } from "react-burger-menu"
+import React from "react"
 import styled from "styled-components"
 import portada from "../images/DangoRetro/portada/portada.png"
 
