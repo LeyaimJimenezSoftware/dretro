@@ -49,7 +49,7 @@ const Header = ({ siteTitle }) => {
 
             <Link
               className="menu-item"
-              to="/articles"
+              to="/category/anime/"
               onClick={() => closeMenu()}
             >
               Anime
@@ -57,7 +57,7 @@ const Header = ({ siteTitle }) => {
 
             <Link
               className="menu-item"
-              to="/centered-div"
+              to="/category/manga"
               onClick={() => closeMenu()}
             >
               Manga
@@ -65,7 +65,7 @@ const Header = ({ siteTitle }) => {
 
             <Link
               className="menu-item"
-              to="/form-sample"
+              to="/category/videojuegos"
               onClick={() => closeMenu()}
             >
               Videojuegos
@@ -73,7 +73,7 @@ const Header = ({ siteTitle }) => {
 
             <Link
               className="menu-item"
-              to="/reactstrap-form"
+              to="/tags"
               onClick={() => closeMenu()}
             >
               Tags
@@ -81,18 +81,17 @@ const Header = ({ siteTitle }) => {
 
             <Link
               className="menu-item"
-              to="/react-final-form"
+              to="/home"
               onClick={() => closeMenu()}
             >
               Dangokura
             </Link>
-            <Link
-              className="menu-item"
-              to="/react-final-form"
-              onClick={() => closeMenu()}
-            >
-              Discord
-            </Link>
+            <a
+           
+            href="https://discord.gg/UdN6fHnMgu"
+          >
+            Discord
+            </a>
           </Menu>
         </SideMenu>
       </NavStyle>

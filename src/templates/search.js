@@ -12,9 +12,9 @@ const SearchPostTitle = ({location}) => {
     <>
       <div
         style={{
-          padding: `0 1.0875rem 1.45rem`,
+          // padding: `0 1.0875rem 1.45rem`,
           margin: "0px 15px 5px 15px",
-          boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
+          // boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
           backgroundColor: COLORS.DANGO_PURPLE,
         }}
       >
@@ -22,7 +22,8 @@ const SearchPostTitle = ({location}) => {
           style={{
             textTransform: "uppercase",
             color: COLORS.WHITE,
-            fontSize: "30",
+            fontSize: '30px',
+            padding: 10,
           }}
         >
           Resultados para: {location.state.value}
