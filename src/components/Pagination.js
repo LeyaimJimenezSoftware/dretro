@@ -11,6 +11,7 @@ import { COLORS } from "../constants/colors"
 
 const Pagination = ({ pageContext }) => {
   const { previousPagePath, nextPagePath, humanPageNumber } = pageContext
+  console.log("hola", pageContext)
   return (
     <div
       style={{

@@ -154,12 +154,55 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  result.data.allWpCategory.edges.forEach(({ node }) => {
+  const categoryesPath = result.data.allWpCategory.edges.map( async({ node }) => {
+      const response = await graphql(`
+      {
+        allWpPost(filter: {categories: {nodes: {elemMatch: {slug: {eq: "${node.slug}"}}}}}) {
+          edges {
+            node {
+              title
+              uri
+              content
+              excerpt
+              slug
+              date(formatString: "MM-DD-YYYY")
+              author {
+                node {
+                  username
+                  name
+                }
+              }
+              categories {
+                nodes {
+                  name
+                  slug
+                  uri
+                }
+              }
+              featuredImage {
+                node {
+                  sourceUrl
+                  uri
+                  title
+                }
+              }
+              tags {
+                nodes {
+                  slug
+                  name
+                  uri
+                }
+              }
+            }
+          }
+        }
+      }
+    `)
     paginate({
       createPage, // The Gatsby `createPage` function
-      items: result.data.allWpCategory.edges, // An array of objects
-      itemsPerPage: 10, // How many items you want per page
-      pathPrefix: node.uri, // Creates pages like `/blog`, `/blog/2`, etc
+      items: response.data.allWpPost.edges, // An array of objects
+      itemsPerPage: 5, // How many items you want per page
+      pathPrefix: `/category/${node.slug}`, // Creates pages like `/blog`, `/blog/2`, etc
       component: CategoryTemplate,
       context: {
         // This is the $slug variable
@@ -169,12 +212,60 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  result.data.allWpTag.edges.forEach(({ node }) => {
+  await Promise.all(categoryesPath)
+
+  const tagsPath = result.data.allWpTag.edges.map(async({ node }) => {
+    const response = await graphql(`
+    {
+      allWpPost(
+        filter: {tags: {nodes: {elemMatch: {slug: {eq: "${node.slug}"}}}}}
+        sort: {fields: date, order: DESC}
+      ) {
+        edges {
+          node {
+            title
+            uri
+            content
+            excerpt
+            slug
+            date(formatString: "MM-DD-YYYY")
+            author {
+              node {
+                username
+                name
+              }
+            }
+            categories {
+              nodes {
+                name
+                slug
+                uri
+              }
+            }
+            featuredImage {
+              node {
+                sourceUrl
+                uri
+                title
+              }
+            }
+            tags {
+              nodes {
+                slug
+                name
+                uri
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
     paginate({
       createPage, // The Gatsby `createPage` function
-      items: result.data.allWpTag.edges, // An array of objects
-      itemsPerPage: 10, // How many items you want per page
-      pathPrefix: node.uri, // Creates pages like `/blog`, `/blog/2`, etc
+      items: response.data.allWpPost.edges, // An array of objects
+      itemsPerPage: 5, // How many items you want per page
+      pathPrefix: `/tag/${node.slug}`, // Creates pages like `/blog`, `/blog/2`, etc
       component: tagsTemplate,
       context: {
         // This is the $slug variable
@@ -183,6 +274,8 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  await Promise.all(tagsPath)
 
   createPage({
     path: "/search/blog",

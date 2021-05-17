@@ -49,7 +49,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allWpPost(sort: { fields: [date], order: DESC }) {
+    allWpPost(limit: 10, sort: { fields: [date], order: DESC }) {
       edges {
         node {
           title

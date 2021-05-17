@@ -37,7 +37,7 @@ const Top = ({ data }) => {
                   <Link to={`${data.uri}`}>
                     <img
                       id="content"
-                      src={data.featuredImage.node.sourceUrl}
+                      src={data?.featuredImage?.node?.sourceUrl}
                       alt={`${data.slug}-img`}
                     />
                     <div

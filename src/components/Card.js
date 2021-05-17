@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCalendarAlt, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faCalendarAlt, faUser, faHome, faGamepad, faBook,  } from "@fortawesome/free-solid-svg-icons"
 import { COLORS } from "../constants/colors"
 import TagCard from "../components/TagCard"
 import "./Card.css"
@@ -25,7 +25,7 @@ const Card = ({ node }) => {
           <Link to={`${node.uri}`}>
             <img
               id="content"
-              src={node.featuredImage.node.sourceUrl}
+              src={node?.featuredImage?.node?.sourceUrl}
               alt={`${node.slug}-img`}
             />
           </Link>
