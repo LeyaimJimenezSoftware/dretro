@@ -13,6 +13,7 @@ const Card = ({ node }) => {
         backgroundColor: "#ffffff",
         marginBottom: "20px",
         boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
+        borderRadius: ".2rem",
       }}
     >
       <div
@@ -24,7 +25,7 @@ const Card = ({ node }) => {
         <div id="imageDiv" className="img-card">
           <Link to={`${node.uri}`}>
             <img
-              id="content"
+              id="imgcontent"
               src={node?.featuredImage?.node?.sourceUrl}
               alt={`${node.slug}-img`}
             />

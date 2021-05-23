@@ -6,14 +6,20 @@ import Card from "../components/Card"
 import Pagination from "../components/Pagination"
 import CardView from "../components/CardView"
 
-const AppPostData = ({data, pageContext}) => {
+const AppPostData = ({ data, pageContext }) => {
   return (
     <>
       <SEO title="Dango Retro" />
-      {data.allWpPost.edges.map(({ node }, key) => (
-        <Card key={key} node={node} />
-      ))}
-      <Pagination pageContext={pageContext} />
+      {data.allWpPost.edges.length !== 0 ? (
+        <div>
+          {data.allWpPost.edges.map(({ node }, key) => (
+            <Card key={key} node={node} />
+          ))}
+          <Pagination pageContext={pageContext} />
+        </div>
+      ) : (
+        <div>No hay blogs disponibles</div>
+      )}
     </>
   )
 }

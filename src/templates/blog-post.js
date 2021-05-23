@@ -15,7 +15,6 @@ export default ({ data }) => {
   const post = data.allWpPost.edges[0].node
   const { title, slug } = post
 
-  console.log("hi", process.env.GATSBY_DISQUS_NAME)
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
     config: { identifier: slug, title },
@@ -30,6 +29,7 @@ export default ({ data }) => {
             style={{
               padding: `1.0875rem 1.45rem`,
               margin: "0px 15px 5px 15px",
+              borderRadius: "0.2rem",
               boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
             }}
           >
@@ -93,12 +93,38 @@ export default ({ data }) => {
           <div
             style={{
               margin: "0px 15px 5px 15px",
+              borderRadius: "0.2rem",
+              boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
             }}
-          >
-            <DiscussionEmbed {...disqusConfig} />
+            >
+            <div
+              className="name-logo"
+              style={{
+                backgroundColor: COLORS.DANGO_PURPLE,
+                color: COLORS.WHITE,
+                borderRadius: ".2rem .2rem 0 0",
+                display: "flex",
+                height: "60px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <p
+                style={{
+                  alignSelf: "center",
+                  marginBottom: 0,
+                  fontSize: "20px",
+                }}
+              >
+                Comentarios
+              </p>
+            </div>
+            <div style={{margin: '10px'}}>
+              <DiscussionEmbed {...disqusConfig} />
+            </div>
           </div>
         </BlogContainer>
-        <SideContainer >
+        <SideContainer>
           <MoreOptions />
         </SideContainer>
       </MainDiv>
@@ -156,16 +182,15 @@ const MainDiv = styled.div`
   }
 `
 const BlogContainer = styled.div`
-    width: 75%;
+  width: 75%;
   @media (max-width: 721px) {
     width: 100%;
   }
 `
 
 const SideContainer = styled.div`
-    width: 25%;
+  width: 25%;
   @media (max-width: 721px) {
     width: 100%;
   }
 `
-

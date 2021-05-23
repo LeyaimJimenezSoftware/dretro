@@ -1,7 +1,6 @@
 import { graphql } from "gatsby"
 
 export const getPost = (opt) => {
-  console.log(opt)
   switch (opt) {
     case "anime":
       return ANIME

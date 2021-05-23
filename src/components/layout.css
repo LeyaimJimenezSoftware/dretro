@@ -600,3 +600,7 @@ pre tt:after {
   font-family: "Press Start 2P";
   font-size: 24px;
 }
+
+.flickity-page-dots {
+  bottom: 0px;
+}

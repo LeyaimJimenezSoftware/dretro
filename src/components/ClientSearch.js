@@ -32,7 +32,6 @@ class ClientSearch extends Component {
     return null
   }
   async componentDidMount() {
-    console.log("didmount", this.props.searchValue)
     this.rebuildIndex()
   }
 
@@ -50,17 +49,13 @@ class ClientSearch extends Component {
     search.addIndex(["node", "title"])
     search.addDocuments(books)
     const res = search.search(this.props.searchValue)
-    console.log("res", res)
     this.setState({ search: search, isLoading: false, searchResults: res })
   }
 
   searchData = () => {
     const { search } = this.state
-    console.log("search", search)
 
     const queryResult = search.search(this.props.searchValue)
-    console.log("e.target.value", this.props.searchValue)
-    console.log("query search", queryResult)
     this.setState({
       searchQuery: this.props.searchValue,
       searchResults: queryResult,

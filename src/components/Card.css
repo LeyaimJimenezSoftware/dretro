@@ -39,6 +39,7 @@
 #imageDiv {
   position: relative;
   height: 200px;
+  border-radius: .2rem .2rem 0px 0rem;
   width: 100%;
   padding: 40px;
   overflow: hidden;
@@ -79,16 +80,16 @@ a:hover {
 }
 
 #image-top {
-  position: relative;
+  position: sticky;
   height: 130px;
   width: 100%;
   padding: 40px;
   overflow: hidden;
 }
 
-#image-top:hover div {
+/* #image-top:hover div {
   display: none;
-}
+} */
 
 .top-post-title {
   font-family: "Press Start 2P";
@@ -108,4 +109,74 @@ a:hover {
 
 .link-more {
   display: none;
+}
+
+.text {
+  background: rgba(0,0,0,0.45);
+  padding-left: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  height: 100%;
+  line-height: 1.4;
+  left: 0px;
+  color: white;
+  position: absolute;
+  text-shadow: 1px 1px 2px rgb(0 0 0 / 20%);
+  top: 0;
+  transition: opacity 0.5s ease-in-out;
+  width: 100%;
+  z-index: 2;
+  -webkit-transition: opacity 0.5s ease-in-out;
+     -moz-transition: opacity 0.5s ease-in-out;
+      -ms-transition: opacity 0.5s ease-in-out;
+       -o-transition: opacity 0.5s ease-in-out;
+          transition: opacity 0.5s ease-in-out;
+  
+}
+
+#text-effect:hover .text {
+  color: white;
+  zoom: 1;
+  filter: alpha(opacity=50);
+  opacity: 0;
+}
+
+#text-effect:hover #content {
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(1.4);
+    -moz-transform: translateX(-50%) translateY(-50%) scale(1.4);
+    -o-transform: translateX(-50%) translateY(-50%) scale(1.4);
+    transform: translateX(-50%) translateY(-50%) scale(1.4);
+    /* opacity: 0.7; */
+    filter: brightness(80%);
+}
+
+#imgcontent:hover {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1.4);
+  -moz-transform: translateX(-50%) translateY(-50%) scale(1.4);
+  -o-transform: translateX(-50%) translateY(-50%) scale(1.4);
+  transform: translateX(-50%) translateY(-50%) scale(1.4);
+  /* opacity: 0.7; */
+  filter: brightness(80%);
+}
+
+#imgcontent {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+}
+
+#imgcontent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: auto;
+  width: 100%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }

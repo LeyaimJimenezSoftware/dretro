@@ -10,7 +10,6 @@ const Posts = props => {
 }
 
 export default function SearchResult({location}) {
-  console.log(location?.state?.value)
  
   return (
     <StaticQuery

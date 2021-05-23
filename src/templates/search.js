@@ -47,7 +47,6 @@ const SearchData = ({ allWpPost, options, locationData }) => {
 }
 
 const search = props => {
-  console.log("pors", props)
   const { pageContext, location } = props
   const { searchData } = pageContext
   const { allWpPost, options } = searchData

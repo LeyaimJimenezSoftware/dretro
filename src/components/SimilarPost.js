@@ -4,18 +4,19 @@ import "./Header.css"
 import { COLORS } from "../constants/colors"
 
 const Posts = props => {
-  console.log("post", props.data)
+  const dataLength = props.data.length - 1
   return (
     <div
       style={{
         margin: "0px 15px 5px 15px",
+        borderRadius: "0.2rem",
+        backgroundColor: COLORS.DANGO_PURPLE,
         boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
       }}
     >
       <div
         className="name-logo"
         style={{
-          backgroundColor: COLORS.DANGO_PURPLE,
           color: COLORS.WHITE,
           display: "flex",
           height: "60px",
@@ -28,35 +29,25 @@ const Posts = props => {
         </p>
       </div>
       <div>
-          {props.data.map((data, key) => {
-            return (
-              <div key={key} style={{ height: "100%", width: "100%" }}>
-                <div id="image-top" className="img-card">
-                  <Link to={`${data.uri}`}>
-                    <img
-                      id="content"
-                      src={data.featuredImage.node.sourceUrl}
-                      alt={`${data.slug}-img`}
-                    />
-                    <div
-                      className="top-post-title-sections"
-                      style={{
-                        position: "absolute",
-                        top: "0px",
-                        left: "0px",
-                        backgroundColor: "hsla(0,0%,0%,0.5)",
-                        height: "100%",
-                        width: "100%",
-                      }}
-                    >
-                      <p style={{marginBottom: 0 , padding: '10px 10px', fontWeight: "bold", fontSize: '30px'}}>{data.title}</p>
-                    </div>
-                  </Link>
-                </div>
+        {props.data.map((data, key) => {
+          return (
+            <div key={key} style={{ height: "100%", width: "100%" }}>
+              <div id="image-top"  style={{
+                    borderRadius: dataLength === key ? "0 0 .2rem .2rem" : "0",
+                  }}>
+                <Link id="text-effect" to={`${data.uri}`}>
+                  <div className="text">{data.title}</div>
+                  <img
+                    id="content"
+                    src={data?.featuredImage?.node?.sourceUrl}
+                    alt={`${data.slug}-img`}
+                  />
+                </Link>
               </div>
-            )
-          })}
-        </div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -5,10 +5,11 @@ import Layout from "../components/layout"
 import MoreOptions from "../components/MoreOptions"
 import { COLORS } from "../constants/colors"
 
-const CardView = ({ allPost, searchInfo }) => {
+const CardView = ({ allPost, searchInfo, isHome, HomeCarousel }) => {
   return (
     <div style={{ backgroundColor: COLORS.WHITE }}>
       <Layout>
+        {HomeCarousel}
         {searchInfo}
         <MainDiv>
           <BlogContainer>

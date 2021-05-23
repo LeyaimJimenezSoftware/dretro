@@ -4,6 +4,15 @@ import SEO from "../components/seo"
 import Card from "../components/Card"
 import CardView from "../components/CardView"
 import { COLORS } from "../constants/colors"
+import Carousel from "../components/Carousel"
+
+const HomeCarousel = () => {
+  return (
+    <div style={{ margin: "0px 15px 1.45rem 15px" }}>
+      <Carousel />
+    </div>
+  )
+}
 
 const AllPostData = ({ data }) => {
   return (
@@ -38,11 +47,7 @@ const AllPostData = ({ data }) => {
 }
 
 const IndexPage = ({ data }) => {
-  return (
-    <CardView
-      allPost={<AllPostData data={data} />}
-    />
-  )
+  return <CardView isHome allPost={<AllPostData data={data}/>} HomeCarousel={<HomeCarousel />} />
 }
 
 export default IndexPage
