@@ -14,11 +14,11 @@ const MoreOptions = ({ data }) => {
         width: "100%",
       }}
     >
+      <BestPost />
       <Search />
       <Category />
+      <SocialMedia />
       <FacebookMedia />
-      {/* <SocialMedia /> */}
-      <BestPost />
     </div>
   )
 }

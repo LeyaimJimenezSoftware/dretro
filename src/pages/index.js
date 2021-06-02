@@ -28,7 +28,7 @@ const AllPostData = ({ data }) => {
           height: "24px",
           display: "flex",
           justifyContent: "center",
-          margin: "0px 3px",
+          margin: "10px 3px",
         }}
       >
         <Link

@@ -13,6 +13,7 @@ import "@fontsource/press-start-2p"
 import "@fontsource/open-sans" // Defaults to weight 400 with all styles included.
 import Header from "./header"
 import FooterPage from "./Footer"
+import logoDangoName from "../images/dangoretroname.png"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -32,23 +33,22 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 1040,
+          maxWidth: 1060,
         }}
       >
         <MobileNav>
           <Link style={{ display: "flex" }} to="/">
-            <h1
-              className="menu-font"
+            <img
+              src={logoDangoName}
+              alt="dango"
               style={{
-                textAlign: "center",
-                alignSelf: "center",
-                margin: 0,
-                color: "white",
-                paddingLeft: "10px",
+                height: "42px",
+                position: "absolute",
+                width: "278px",
+                top: "31px",
+                marginLeft: "14px",
               }}
-            >
-              Dango Retro
-            </h1>
+            />
           </Link>
         </MobileNav>
         <main>{children}</main>
@@ -68,7 +68,8 @@ const MobileNav = styled.header`
   background-color: #1c1c1e;
   height: 100px;
   display: none;
-  @media (max-width: 721px) {
+  @media (max-width: 954px) {
     display: flex;
+    margin-bottom: 1.45rem;
   }
 `

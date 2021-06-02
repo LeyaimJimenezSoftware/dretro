@@ -4,11 +4,12 @@ import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
 import styled from "styled-components"
 import portada from "../images/DangoRetro/portada/portada.png"
+import logoDango from "../images/dangoretro.png"
+import logoDangoName from "../images/dangoretroname.png"
 import "./Header.css"
 
-const Header = ({ siteTitle }) => {
+const Header = props => {
   const [menuState, setMenuOpen] = useState({ menuOpen: false })
-
   const closeMenu = () => {
     setMenuOpen({ menuOpen: false })
   }
@@ -18,9 +19,27 @@ const Header = ({ siteTitle }) => {
       <NavStyle>
         <NavItems>
           <div
-            style={{ display: "flex", justifyContent: "space-around" }}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
             className="page-name"
           >
+            <Link  style={{borderColor: "transparent"}} to="/">
+              <div className="name-logo">
+                <img
+                  src={logoDangoName}
+                  alt="dango"
+                  style={{
+                    height: "39px",
+                    position: "absolute",
+                    top: "31px",
+                  }}
+                />
+              </div>
+            </Link>
+
             <div>
               <Link className="nav-options" to="/">
                 Home
@@ -28,12 +47,9 @@ const Header = ({ siteTitle }) => {
               <Link className="nav-options" to="/category/anime">
                 Anime
               </Link>
+
               <Link to="/category/manga">Manga</Link>
-            </div>
-            <div className="name-logo" style={{margin: '0px 50px'}}>
-            <p style={{marginBottom: 0, color: '#4e52f8' }}>Dango Retro</p>
-            </div>
-            <div>
+
               <Link to="/category/videojuegos/">Videojuegos</Link>
               <Link to="/tags">Tags</Link>
               <Link to="/category/podcast/">Podcast</Link>
@@ -71,27 +87,14 @@ const Header = ({ siteTitle }) => {
               Videojuegos
             </Link>
 
-            <Link
-              className="menu-item"
-              to="/tags"
-              onClick={() => closeMenu()}
-            >
+            <Link className="menu-item" to="/tags" onClick={() => closeMenu()}>
               Tags
             </Link>
 
-            <Link
-              className="menu-item"
-              to="/home"
-              onClick={() => closeMenu()}
-            >
+            <Link className="menu-item" to="/home" onClick={() => closeMenu()}>
               Dangokura
             </Link>
-            <a
-           
-            href="https://discord.gg/UdN6fHnMgu"
-          >
-            Discord
-            </a>
+            <a href="https://discord.gg/UdN6fHnMgu">Discord</a>
           </Menu>
         </SideMenu>
       </NavStyle>
@@ -112,19 +115,18 @@ export default Header
 const NavHeader = styled.header`
   background-color: #1c1c1e;
   margin-bottom: 1.45rem;
-  background-image: url(${portada});
-  @media (max-width: 721px) {
+  @media (max-width: 954px) {
     margin-bottom: 0;
   }
 `
 
 const NavStyle = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
-  @media (max-width: 721px) {
+  max-width: 1060px;
+  padding: 2rem 1.0875rem;
+  @media (max-width: 954px) {
     padding: 0;
     display: block;
   }
@@ -132,20 +134,26 @@ const NavStyle = styled.div`
 const NavItems = styled.div`
   display: flex;
   flex-direction: row;
+  width: 100%;
   flex-wrap: nowrap;
   justify-content: space-between;
-  margin-top: 1em;
   a {
     color: #ffffff;
     text-align: center;
-    padding: 1em;
+    font-family: "Press Start 2P";
+    padding: 10px;
     text-decoration: none;
-    font-size: 1em;
+    border: 2px solid transparent;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
     &:hover {
-      color: #4e52f8;
+      border-radius: 20px;
+      border-color: #4e52f8;
+      color: white;
     }
   }
-  @media (max-width: 721px) {
+  @media (max-width: 955px) {
     display: none;
   }
 `
@@ -204,7 +212,7 @@ const SideMenu = styled.div`
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
-  @media (min-width: 720px) {
+  @media (min-width: 954px) {
     display: none;
   }
 `

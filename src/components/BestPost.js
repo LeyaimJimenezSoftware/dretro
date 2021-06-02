@@ -12,6 +12,7 @@ const Top = ({ data }) => {
         padding: "0px 0px 0px 0px",
         width: "100%",
         borderRadius: ".2rem",
+        marginBottom: '26.100px'
       }}
     >
       <div

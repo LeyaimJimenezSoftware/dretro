@@ -24,7 +24,8 @@ const AppPostData = ({ data, pageContext }) => {
   )
 }
 
-const Category = ({ data, pageContext }) => {
+const Category = ({ data, pageContext, location }) => {
+  console.log('p-', location)
   return (
     <CardView allPost={<AppPostData data={data} pageContext={pageContext} />} />
   )

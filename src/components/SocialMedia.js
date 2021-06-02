@@ -16,7 +16,7 @@ const SocialMedia = ({ data }) => {
         marginBottom: "1.45rem",
       }}
     >
-      <div
+      {/* <div
         style={{
           boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
           marginBottom: "18px",
@@ -96,7 +96,7 @@ const SocialMedia = ({ data }) => {
             />
           </a>
         </div>
-      </div>
+      </div> */}
       <div
         style={{
           boxShadow: `inset 0 -1px 0 rgba(79,131,170,.2), 0 0 30px rgba(0,0,0,.07)`,
