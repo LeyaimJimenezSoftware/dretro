@@ -3,8 +3,7 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { slide as Menu } from "react-burger-menu"
 import styled from "styled-components"
-import portada from "../images/DangoRetro/portada/portada.png"
-import logoDango from "../images/dangoretro.png"
+import SocialMediaLayout from "../components/SocialMediaLayout"
 import logoDangoName from "../images/dangoretroname.png"
 import "./Header.css"
 
@@ -26,7 +25,7 @@ const Header = props => {
             }}
             className="page-name"
           >
-            <Link  style={{borderColor: "transparent"}} to="/">
+            <Link style={{ borderColor: "transparent" }} to="/">
               <div className="name-logo">
                 <img
                   src={logoDangoName}
@@ -41,28 +40,51 @@ const Header = props => {
             </Link>
 
             <div>
-              <Link className="nav-options" to="/">
+              <Options className="nav-options" to="/">
                 Home
-              </Link>
-              <Link className="nav-options" to="/category/anime">
+              </Options>
+              <Options className="nav-options" to="/category/anime">
                 Anime
-              </Link>
-
-              <Link to="/category/manga">Manga</Link>
-
-              <Link to="/category/videojuegos/">Videojuegos</Link>
-              <Link to="/tags">Tags</Link>
-              <Link to="/category/podcast/">Podcast</Link>
+              </Options >
+              <Options to="/category/manga">Manga</Options>
+              <Options to="/category/videojuegos/">Videojuegos</Options>
+              <Options to="/tags">Tags</Options>
+              <div
+                style={{
+                  position: "absolute",
+                  height: "10px",
+                  top: "3px",
+                  width: "570px",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <SocialMediaLayout />
+              </div>
+              <Options to="/category/podcast/">Podcast</Options>
             </div>
           </div>
         </NavItems>
 
         <SideMenu>
           <Menu disableAutoFocus isOpen={menuState.menuOpen}>
+          <Link style={{ borderColor: "transparent" }} to="/">
+              <div className="name-logo">
+                <img
+                  src={logoDangoName}
+                  alt="dango"
+                  style={{
+                    height: "29px",
+                    width: "250px",
+                    top: "31px",
+                    marginBottom: "5px",
+                  }}
+                />
+              </div>
+            </Link>
             <Link className="menu-item" to="/" onClick={() => closeMenu()}>
               Home
             </Link>
-
             <Link
               className="menu-item"
               to="/category/anime/"
@@ -94,7 +116,9 @@ const Header = props => {
             <Link className="menu-item" to="/home" onClick={() => closeMenu()}>
               Dangokura
             </Link>
-            <a href="https://discord.gg/UdN6fHnMgu">Discord</a>
+            <div style={{display: 'flex', alignContent: 'center', justifyContent: 'center', marginTop: '20px'}}>
+              <SocialMediaLayout />
+            </div>
           </Menu>
         </SideMenu>
       </NavStyle>
@@ -107,7 +131,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  siteTitle: `Leya`,
+  siteTitle: `Dango Retro`,
 }
 
 export default Header
@@ -124,7 +148,7 @@ const NavStyle = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1060px;
+  max-width: 1080px;
   padding: 2rem 1.0875rem;
   @media (max-width: 954px) {
     padding: 0;
@@ -137,24 +161,25 @@ const NavItems = styled.div`
   width: 100%;
   flex-wrap: nowrap;
   justify-content: space-between;
-  a {
-    color: #ffffff;
-    text-align: center;
-    font-family: "Press Start 2P";
-    padding: 10px;
-    text-decoration: none;
-    border: 2px solid transparent;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 12px;
-    &:hover {
-      border-radius: 20px;
-      border-color: #4e52f8;
-      color: white;
-    }
-  }
   @media (max-width: 955px) {
     display: none;
+  }
+`
+
+const Options = styled(props => <Link {...props} />)`
+  color: #ffffff;
+  text-align: center;
+  font-family: "Press Start 2P";
+  padding: 10px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  &:hover {
+    border-radius: 20px;
+    border-color: #4e52f8;
+    color: white;
   }
 `
 

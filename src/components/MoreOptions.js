@@ -17,7 +17,7 @@ const MoreOptions = ({ data }) => {
       <BestPost />
       <Search />
       <Category />
-      <SocialMedia />
+      {/* <SocialMedia /> */}
       <FacebookMedia />
     </div>
   )
