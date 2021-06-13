@@ -65,8 +65,6 @@ export default ({ data }) => {
             </div>
 
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
-            <p> By: {post.author.name} </p>
-            <p> On: {post.date} </p>
             <div
               style={{
                 display: "flex",

@@ -6,6 +6,7 @@ import dango from "../images/DangoRetro/portada/portada.png"
 import "./flickity.css"
 
 const CarouselData = ({ data }) => {
+  console.log("DATA", data)
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }} />
@@ -36,7 +37,7 @@ export default function Carousel(props) {
     <StaticQuery
       query={graphql`
         query {
-          allWpPost(limit: 4) {
+          allWpPost(sort: {fields: date, order: DESC}, limit: 4) {
             edges {
               node {
                 title
